@@ -54,7 +54,7 @@ body {
 }
 
 .container .app-header {
-    margin-top: 3vh;
+    margin-top: 10vh;
 }
 
 .app-header .heading {
@@ -465,4 +465,175 @@ body.bot-responding .prompt-form #stop-response-btn {
     background: linear-gradient(to right, #1d7efd, #8f6fff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+.copy-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: var(--secondary-hover-color);
+    color: var(--text-color);
+    border: none;
+    border-radius: 8px;
+    padding: 6px;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.3s ease;
+}
+
+.copy-btn:hover {
+    background: #1d7efd;
+    color: #fff;
+}
+
+pre {
+    position: relative;
+    padding-top: 10px !important; /* extra space for button */
+}
+.tone-selector {
+    height: 45px;
+    display: flex;
+    align-items: center;
+}
+
+#tone-select {
+    height: 100%;
+    border-radius: 10px;
+    border: none;
+    padding: 0 12px;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    font-size: 0.95rem;
+    cursor: pointer;
+}
+
+#tone-select:hover {
+    background: var(--secondary-hover-color);
+}
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    background: var(--secondary-color);
+    padding: 16px;
+    z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    overflow-y: auto;
+}
+
+.sidebar h2 {
+    margin-bottom: 1rem;
+    color: var(--text-color);
+}
+
+.sidebar.open {
+    transform: translateX(0);
+}
+
+.sidebar .sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar .history-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+.history-list li {
+    padding: 12px;
+    background: var(--primary-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    font-size: 0.95rem;
+}
+
+.history-list li button {
+    background: none;
+    color: #d62939;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+/* Toggle Button */
+.sidebar-toggle {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--secondary-color);
+    color: var(--text-color);
+    transition: 0.3s ease;
+    transition: left 0.3s ease;
+}
+
+/* ⬇️ NEW: move it right when sidebar is open */
+.sidebar.open + .sidebar-toggle {
+    left: 280px; /* Slightly more than sidebar width (260px) */
+}
+
+.sidebar-toggle:hover {
+    background: var(--secondary-hover-color);
+}
+#new-chat-btn {
+    left: 75px; /* Place it next to the sidebar toggle */
+}
+
+.sidebar.open + #toggle-sidebar + #new-chat-btn {
+    left: 310px; /* Push both buttons right when sidebar is open */
+}
+/* Sidebar Footer Styles */
+.sidebar-footer {
+    margin-top: auto; /* Pushes to bottom */
+    padding: 20px 0;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sidebar-footer .footer-logo {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 8px;
+}
+
+.sidebar-footer p {
+    color: var(--subheading-color);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* Make sure sidebar has flex column layout */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+}
+.sidebar-footer:hover p {
+    color: var(--text-color);
+    transition: color 0.3s ease;
+}
+body.light-theme .sidebar-footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+body.light-theme .sidebar-footer p {
+    color: var(--placeholder-color);
 }
